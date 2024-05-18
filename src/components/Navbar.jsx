@@ -3,44 +3,62 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 const Navbar = () => {
-    const navigate = useNavigate();
 
   return (
+    
     <div>
         
 
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Galleistan</span>
-    </a>
-    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-        </svg>
-    </button>
-    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-      <li>
-  <Link to="/user-profile" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-    My Profile
-  </Link>
-</li>
-<li>
-  <Link to="/all-profiles" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-    All Profile
-  </Link>
-</li>
-        <li>
-          <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Logout</a>
-        </li>
-        
-      </ul>
-    </div>
+        <div class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
+  <div class="-m-6 max-h-[768px] w-[calc(100%+48px)] overflow-scroll">
+    <nav
+      class="sticky top-0 z-10 block w-full max-w-full px-4 py-2 text-white bg-white border rounded-none shadow-md h-max border-white/80 bg-opacity-80 backdrop-blur-2xl backdrop-saturate-200 lg:px-8 lg:py-4">
+      <div class="flex items-center justify-between text-blue-900">
+        <a href="#"
+          class="mr-4 block cursor-pointer py-1.5 font-sans text-base font-medium leading-relaxed text-inherit antialiased">
+         Gallery 
+        </a>
+        <div class="flex items-center gap-4">
+          <div class="hidden mr-4 lg:block">
+            <ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+              <li class="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-900">
+                <Link to="/my-profile" class="flex items-center">
+                  My Profile
+                </Link>
+              </li>
+              <li class="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-900">
+              <Link to="/all-profiles" class="flex items-center">
+
+                  All Profiles
+                </Link>
+              </li>
+            
+            </ul>
+          </div>
+          <div class="flex items-center gap-x-1">
+         
+            <button
+              class="hidden select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
+              type="button">
+              <span>Sign Out</span>
+            </button>
+          </div>
+          <button
+            class="relative ml-auto h-6 max-h-[40px] w-6 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-inherit transition-all hover:bg-transparent focus:bg-transparent active:bg-transparent disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:hidden"
+            type="button">
+            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  
   </div>
-</nav>
+</div>
 
     </div>
   )

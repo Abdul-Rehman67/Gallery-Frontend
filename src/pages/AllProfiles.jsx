@@ -1,13 +1,16 @@
 import React from 'react'
 import image1 from '../images/image1.png'
+import Navbar from '../components/Navbar'
 
 const AllProfiles = () => {
   return (
     <>
-    <h1 className='mt-5 text-2xl'>
+<Navbar/>
+
+    <h1 className='space-x-12 p-5 mt-5 text-2xl'>
     Welcome to gallery, where you find people not images 
 </h1>
-<div className='flex justify-center p-5 space-x-12 items-center space-around mt-5'>
+<div className='flex justify-start p-5 space-x-12 items-center space-around mt-5'>
 
 <div class="max-w-sm rounded overflow-hidden shadow-lg">
   <img class="w-full" src={image1} alt="Sunset in the mountains"/>
