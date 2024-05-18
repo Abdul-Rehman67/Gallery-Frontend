@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
-import { Button, Flex } from 'antd';
+import { Checkbox,Button, Flex } from 'antd';
+
 
 const ImageUpload = () => {
   const [fileList, setFileList] = useState([
@@ -12,6 +13,11 @@ const ImageUpload = () => {
       url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
     },
   ]);
+  const [IsPrivate,setIsPrivate] = useState(false)
+
+  const onChangeIsPrivate = (e) => {
+    console.log(`checked = ${e.target.checked}`);
+  };
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
   };
@@ -45,6 +51,7 @@ const ImageUpload = () => {
         {fileList.length < 5 && '+ Upload'}
       </Upload>
     </ImgCrop>
+    <Checkbox onChange={onChangeIsPrivate}>Private ?</Checkbox>
     <Button>Save</Button>
     </>
   );
