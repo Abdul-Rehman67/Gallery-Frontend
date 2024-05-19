@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import { Checkbox,Button, Flex } from 'antd';
+import axios from '../apis/axios';
 
 
 const ImageUpload = () => {
@@ -36,6 +37,7 @@ const ImageUpload = () => {
     };
   
     const handleUpload = async () => {
+        console.log(fileList)
       if (fileList.length === 0) {
         alert('Please upload an image first.');
         return;
@@ -46,12 +48,12 @@ const ImageUpload = () => {
       formData.append('isPrivate', isPrivate);
   
       try {
-        // const response = await axios.post('http://localhost:5000/api/upload', formData, {
-        //   headers: {
-        //     'Content-Type': 'multipart/form-data',
-        //   },
-        // });
-        // console.log('Uploaded successfully:', response.data);
+        const response = await axios.post('http://localhost:5000/image/upload-image', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        console.log('Uploaded successfully:', response.data);
       } catch (error) {
         console.error('Upload failed:', error);
       }
@@ -59,7 +61,7 @@ const ImageUpload = () => {
   
     return (
       <>
-        <ImgCrop rotationSlider>
+      
           <Upload
             action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
             listType="picture-card"
@@ -69,7 +71,7 @@ const ImageUpload = () => {
           >
             {fileList.length < 1 && '+ Upload'}
           </Upload>
-        </ImgCrop>
+       
         <Checkbox onChange={onChangeIsPrivate}>Private?</Checkbox>
         <Button onClick={handleUpload}>Save</Button>
       </>
