@@ -68,6 +68,7 @@ const UserProfile = () => {
         setLoading(false)
         setFileList([])
         alert('Image uploaded successfully!')
+        window.location.reload(); 
       }
       else{
         setLoading(false)
@@ -94,6 +95,7 @@ const UserProfile = () => {
     if(response.data.success){
       console.log(response.data)
       setPreviousData(response?.data?.payload?.data)
+      
     }
   }
   catch(e){

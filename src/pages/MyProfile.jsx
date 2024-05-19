@@ -8,7 +8,7 @@ import { GET_IMAGES } from '../apis/apiRoutes'
 
 const MyProfile = () => {
 const [imageData,setImageData]=useState([]) 
-const getImageData = async()=>{
+const  getImageData = async()=>{
 const result = await axios.get(`${GET_IMAGES}/${localStorage.getItem('id')}`)
 setImageData(result?.data?.payload?.result)
 console.log("result of image data",result);
@@ -37,7 +37,7 @@ Welcome yo your Gallery!
     <h1 className='mt-5 text-2xl'>
         My Images
     </h1>
-  <ImagesViewer images={imageData} />
+  <ImagesViewer images={imageData}  isDelete={true}  />
 </div>
 
 
