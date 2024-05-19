@@ -3,71 +3,58 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 const Navbar = () => {
+    const isAuth = localStorage.getItem("isAuthenticated")
     const navigate = useNavigate()
     const handleLogout = ()=>{
         localStorage.clear()
         navigate('/login')
     }
 
-  return (
-    
-    <div>
-        
-
-        <div class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
-  <div class="-m-6 max-h-[768px] w-[calc(100%+48px)] overflow-scroll">
-    <nav
-      class="sticky top-0 z-10 block w-full max-w-full px-4 py-2 text-white bg-white border rounded-none shadow-md h-max border-white/80 bg-opacity-80 backdrop-blur-2xl backdrop-saturate-200 lg:px-8 lg:py-4">
-      <div class="flex items-center justify-between text-blue-900">
-        <a href="#"
-          class="mr-4 block cursor-pointer py-1.5 font-sans text-base font-medium leading-relaxed text-inherit antialiased">
-         Gallery 
-        </a>
-        <div class="flex items-center gap-4">
-          <div class="hidden mr-4 lg:block">
-            <ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-              <li class="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-900">
-                <Link to="/my-profile" class="flex items-center">
-                  My Profile
-                </Link>
-              </li>
-              <li class="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-900">
-              <Link to="/all-profiles" class="flex items-center">
-
-                  All Profiles
-                </Link>
-              </li>
-            
-            </ul>
+   return  (
+        <div className="grid  w-full place-items-center overflow-x-scroll rounded-lg p-6">
+          <div className="-m-6 max-h-[768px] w-[calc(100%+48px)] overflow-scroll">
+            <nav className="sticky top-0 z-10 block w-full max-w-full px-4 py-2 text-white bg-white border rounded-none shadow-md h-max border-white/80 bg-opacity-80 backdrop-blur-2xl backdrop-saturate-200">
+              <div className="flex items-center justify-between text-blue-900">
+                <a
+                  href="#"
+                  className="mr-4 block cursor-pointer py-1.5 font-sans text-base font-medium leading-relaxed text-inherit antialiased"
+                >
+                  Gallery
+                </a>
+                <div className="flex items-center gap-4">
+                  <ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+                    <li className="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-900">
+                    {isAuth ?  <Link to="/my-profile" className="flex items-center">
+                        My Profile
+                      </Link>:''}
+                    </li>
+                    <li className="block p-1 font-sans text-sm antialiased font-normal leading-normal text-blue-900">
+                      <Link to="/all-profiles" className="flex items-center">
+                        All Profiles
+                      </Link>
+                    </li>
+                  </ul>
+                  <div className="flex items-center gap-x-1">
+                    <button
+                      onClick={handleLogout}
+                      className="select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                      type="button"
+                    >
+                      {isAuth ? (
+                        <span>Sign Out</span>
+                      ) : (
+                        <Link to="/login" className="text-white">
+                          Sign In
+                        </Link>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </nav>
           </div>
-          <div class="flex items-center gap-x-1">
-         
-            <button
-            onClick={handleLogout}
-              class="hidden select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
-              type="button">
-              <span>Sign Out</span>
-            </button>
-          </div>
-          <button
-            class="relative ml-auto h-6 max-h-[40px] w-6 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-inherit transition-all hover:bg-transparent focus:bg-transparent active:bg-transparent disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:hidden"
-            type="button">
-            <span class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </span>
-          </button>
         </div>
-      </div>
-    </nav>
-  
-  </div>
-</div>
-
-    </div>
-  )
+      );
 }
 
 export default Navbar

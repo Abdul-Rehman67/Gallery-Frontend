@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { CREATE_ACCOUNT, LOG_IN } from "../apis/apiRoutes";
 import axios from '../apis/axios'
+import Navbar from "../components/Navbar";
 
 
 const CreateAccount = () => {
@@ -57,6 +58,10 @@ const [loading,setLoading] = useState(false);
   useEffect(() => {}, []);
   return (
     <>
+    <div className="">
+
+<Navbar/>
+</div>
       <div className="bg-gray-200 min-h-screen flex flex-col">
         <div className="container md:w-5/12 w-full mx-auto flex-1 flex flex-col items-center justify-center px-2">
           <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">

@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ImageUpload from '../components/ImageUpload'
 import ImagesViewer from '../components/ImagesViewer'
 import Navbar from '../components/Navbar'
+import axios from '../apis/axios'
+import { GET_IMAGES } from '../apis/apiRoutes'
 
 
 const MyProfile = () => {
+const [imageData,setImageData]=useState([]) 
+const getImageData = async()=>{
+const result = await axios.get(`${GET_IMAGES}/${localStorage.getItem('id')}`)
+setImageData(result?.data?.payload?.result)
+console.log("result of image data",result);
+}
+useEffect(()=>{
+  console.log("hi")
+getImageData()
+
+},[])
+
   return (
 <>
 <Navbar/>
@@ -23,7 +37,7 @@ Welcome yo your Gallery!
     <h1 className='mt-5 text-2xl'>
         My Images
     </h1>
-  <ImagesViewer/>
+  <ImagesViewer images={imageData} />
 </div>
 
 
