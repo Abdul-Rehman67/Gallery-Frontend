@@ -14,6 +14,7 @@ const UserProfile = () => {
     email: '',
     bio: '',
   });
+  const userObj = {}
   const [previousData,setPreviousData]=useState({})
 
   useEffect(()=>{
@@ -25,7 +26,6 @@ const UserProfile = () => {
   };
 
   const onChange = ({ fileList: newFileList }) => {
-    // Limit to one image
     if (newFileList.length > 1) {
       newFileList = [newFileList[newFileList.length - 1]];
     }
@@ -94,8 +94,8 @@ const UserProfile = () => {
     const response = await axios.get(`${GET_PROFILE}/${localStorage.getItem('id')}`)
     if(response.data.success){
       console.log(response.data)
-      setPreviousData(response?.data?.payload?.data)
-      
+      let user = response?.data?.payload?.data
+      userObj=  {firstname:user?.firstname||'',lastname:user?.lastname,email:user?.email,bio:user?.bio}
     }
   }
   catch(e){
@@ -103,9 +103,7 @@ alert('Something went wrong',e)
   }
     
   };
-  const getImageData = async () =>{
-
-  }
+ 
   const handleSubmit = async () => {
     console.log('User data:', userData);
   };
@@ -131,7 +129,7 @@ alert('Something went wrong',e)
               <input
                 type="text"
                 name="lastname"
-                value={previousData.lastname}
+                value={userObj.lastname}
                 onChange={handleInputChange}
                 className="w-full mt-2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
               />
