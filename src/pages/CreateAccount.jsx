@@ -15,19 +15,22 @@ const [loading,setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    var emailPattern =
+    let  emailPattern =
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!emailPattern.test(formData.email)) {
-      alert("Incorrect email address");
-      return;
-    }
-
+  
     if (
       Object.keys(formData).some((key) => formData[key] === "") ||
       Object.keys(formData).length < 5
     ) {
       alert("all fields are required");
-    } else {
+      return
+    }
+    if (!emailPattern.test(formData.email)) {
+      alert("Incorrect email address");
+      return;
+    }
+
+     else {
         setLoading(true)
         const response = await  axios.post(CREATE_ACCOUNT, formData);
         if (response.data.success) {
@@ -118,7 +121,7 @@ const [loading,setLoading] = useState(false);
               
               <div className="text-grey-dark mt-6"onKeyDown={handleKeyDown}>
                 Already have an account?
-                <Link to={"/login"}>
+                <Link to={"/"}>
                   <span className="text-blue-500 no-underline border-b border-blue-500 text-blue">
                     Log in
                   </span>

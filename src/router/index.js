@@ -25,7 +25,7 @@ function Navigator() {
           <Route element={<MyProfile />} path="/my-profile" />
 
           </Route>
-          <Route element={<Login />} path="/login" />
+          <Route element={<Login />} path="/" />
           <Route element={<UserProfile />} path="/user-profile/:id" />
           <Route element={<AllProfiles />} path="/all-profiles" />
           <Route element={<CreateAccount />} path="/create-account" />

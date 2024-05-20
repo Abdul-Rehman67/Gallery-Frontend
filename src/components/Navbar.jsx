@@ -7,7 +7,7 @@ const Navbar = () => {
     const navigate = useNavigate()
     const handleLogout = ()=>{
         localStorage.clear()
-        navigate('/login')
+        navigate('/')
     }
 
    return  (
@@ -43,7 +43,7 @@ const Navbar = () => {
                       {isAuth ? (
                         <span>Sign Out</span>
                       ) : (
-                        <Link to="/login" className="text-white">
+                        <Link to="/" className="text-white">
                           Sign In
                         </Link>
                       )}

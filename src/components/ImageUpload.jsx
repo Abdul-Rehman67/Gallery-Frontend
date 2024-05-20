@@ -75,7 +75,8 @@ const UserProfile = () => {
         alert('Upload failed');
       }
     } catch (error) {
-        setLoading(true)
+      console.log(error)
+        setLoading(false)
       alert('Upload failed:', error);
     }
   };

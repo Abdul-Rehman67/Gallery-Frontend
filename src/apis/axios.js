@@ -28,7 +28,7 @@ axios.interceptors.response.use(
   },
   function (err) {
     if (err.response.status === 401) {
-      window.location.href = "/login";
+      window.location.href = "/";
       // localStorage.removeItem('isAuthenticated')
       console.log("token not");
     }

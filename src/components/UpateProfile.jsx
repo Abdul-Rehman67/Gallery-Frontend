@@ -87,6 +87,7 @@ const UpdateProfile = () => {
           <input
             type="email"
             name="email"
+            disabled={true}
             value={userData.email}
             onChange={handleInputChange}
             className="w-full mt-2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
