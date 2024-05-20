@@ -7,4 +7,5 @@ export const GET_PROFILE = domain_prefix + "user/get-user-data";
 export const GET_USERS = domain_prefix + "user/get-all-user-data";
 export const GET_IMAGES = domain_prefix + "image/get-images";
 export const DELETE_IMAGES = domain_prefix + "image/delete-images";
+export const UPDATE_PROFILE = domain_prefix + "user/update-user";
 

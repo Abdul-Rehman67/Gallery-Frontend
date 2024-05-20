@@ -19,7 +19,6 @@ const UserProfile = () => {
     console.log("result of image data",result);
     }
     useEffect(()=>{
-      console.log("hi")
     getImageData()
     
     },[])
@@ -28,12 +27,10 @@ const UserProfile = () => {
 <>
 <Navbar/>
 <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
- <h1 className='mt-5 text-2xl'>
-       Abdul Rehman Shaikh
-    </h1>
+
 
     <h1 className='mt-5 text-2xl'>
-        Abdul's Images
+        User Images
     </h1>
   <ImagesViewer images={imageData}/>
 </div>

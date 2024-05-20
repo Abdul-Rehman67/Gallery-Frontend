@@ -3,6 +3,7 @@ import { Upload, Checkbox, Button } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import axios from '../apis/axios';
 import { GET_PROFILE, UPLOAD_IMAGE } from '../apis/apiRoutes';
+import UpateProfile from './UpateProfile';
 
 const UserProfile = () => {
   const [fileList, setFileList] = useState([]);
@@ -14,7 +15,6 @@ const UserProfile = () => {
     email: '',
     bio: '',
   });
-  const userObj = {}
   const [previousData,setPreviousData]=useState({})
 
   useEffect(()=>{
@@ -95,10 +95,10 @@ const UserProfile = () => {
     if(response.data.success){
       console.log(response.data)
       let user = response?.data?.payload?.data
-      userObj=  {firstname:user?.firstname||'',lastname:user?.lastname,email:user?.email,bio:user?.bio}
     }
   }
   catch(e){
+    console.log(e)
 alert('Something went wrong',e)
   }
     
@@ -112,58 +112,9 @@ alert('Something went wrong',e)
     <div className="max-w-4xl p-6 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-semibold mb-4">My Profile</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-4">
-          <div className="flex space-x-4">
-            <div className="w-1/2">
-              <label className="block text-gray-700">First Name</label>
-              <input
-                type="text"
-                name="firstname"
-                // value={previousData.firstname}
-                onChange={handleInputChange}
-                className="w-full mt-2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-              />
-            </div>
-            <div className="w-1/2">
-              <label className="block text-gray-700">Last Name</label>
-              <input
-                type="text"
-                name="lastname"
-                value={userObj.lastname}
-                onChange={handleInputChange}
-                className="w-full mt-2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-              />
-            </div>
-          </div>
-          <div className="">
-            <div className="w-full ">
-              <label className="block text-gray-700">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={previousData.email}
-                onChange={handleInputChange}
-                className="w-full mt-2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-              />
-            </div>
-            <div className="">
-              <label className="block text-gray-700">Bio</label>
-              <textarea
-                name="bio"
-                value={previousData.bio}
-                onChange={handleInputChange}
-                className="w-full mt-2 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-              />
-            </div>
-          </div>
-          <button
-                type="submit"
-                className="w-full text-center py-3 rounded bg-blue-600 text-white hover:bg-blue-500 focus:outline-none my-1"
-                onClick={handleSubmit}
-              >
-                {!loading ? ' Update' : 'Please wait...'}
-                 
-              </button>           </div>
+
+        <UpateProfile/>
+     
         <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
           <label className="block text-gray-700 mb-2">Upload Pictures</label>
        
